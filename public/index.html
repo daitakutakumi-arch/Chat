@@ -1,0 +1,41 @@
+<div id="chat"></div>
+<head><link rel="stylesheet" href="/style.css">
+</head>
+
+<form id="form" enctype="multipart/form-data">
+  <input name="comment" placeholder="コメント">
+  <input name="image" type="file">
+  <button>送信</button>
+</form>
+
+<script>
+fetch("/me").then(r=>r.json()).then(me=>{
+  if(!me) location.href="/login.html";
+});
+
+function load(){
+  fetch("/comments").then(r=>r.json()).then(list=>{
+    chat.innerHTML="";
+    list.forEach(m=>{
+      chat.innerHTML+=`
+        <div>
+          <b>${m.user}</b> (${m.plan})
+          <div>${m.comment}</div>
+          ${m.image?
+            `<img src="/uploads/${m.image}">
+             ${m.plan==="paid"?
+               `<a href="/download/${m.image}">DL</a>`:
+               `<span>🔒DL不可</span>`}`
+          :""}
+        </div>`;
+    });
+  });
+}
+load();
+
+form.onsubmit=e=>{
+  e.preventDefault();
+  fetch("/post",{method:"POST",body:new FormData(form)})
+    .then(()=>{form.reset();load();});
+};
+</script>

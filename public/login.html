@@ -1,0 +1,28 @@
+<head><link rel="stylesheet" href="/style.css">
+</head>
+<form id="login">
+  <input name="username" placeholder="ID">
+  <input name="password" type="password" placeholder="PW">
+  <button>ログイン</button>
+</form>
+
+<script>
+login.onsubmit=e=>{
+  e.preventDefault();
+  fetch("/login",{
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({
+      username:username.value,
+      password:password.value
+    })
+  })
+  .then(r=>r.json())
+  .then(res=>{
+    if(res.ok) location.href="/";
+    else alert(res.error);
+  });
+};
+</script>
+
+

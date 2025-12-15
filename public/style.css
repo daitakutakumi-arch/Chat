@@ -1,0 +1,150 @@
+/* 全体 */
+body {
+  margin: 0;
+  font-family: "Rounded Mplus 1c", "Hiragino Maru Gothic ProN", sans-serif;
+  background: linear-gradient(180deg, #ffd6ec, #e0f4ff);
+  min-height: 100vh;
+}
+
+/* ログイン画面 */
+form {
+  max-width: 360px;
+  margin: 60px auto;
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 24px;
+  box-shadow: 0 8px 0 #ff9ecb;
+}
+
+form input,
+form button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border-radius: 20px;
+  border: 2px solid #ff9ecb;
+  font-size: 14px;
+}
+
+form button {
+  background: #ff6fb3;
+  color: white;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+form button:hover {
+  background: #ff4fa3;
+}
+
+/* チャット全体 */
+#chat {
+  max-width: 480px;
+  margin: 20px auto;
+  padding: 10px;
+}
+
+/* メッセージ */
+.msg {
+  background: white;
+  border-radius: 22px;
+  padding: 12px;
+  margin-bottom: 14px;
+  box-shadow: 0 6px 0 #ffb3d9;
+  animation: pop 0.2s ease-out;
+}
+
+@keyframes pop {
+  from { transform: scale(0.95); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+.msg b {
+  color: #ff4fa3;
+}
+
+/* コメント本文 */
+.msg div {
+  margin-top: 4px;
+  word-break: break-word;
+}
+
+/* 画像 */
+.msg img {
+  max-width: 100%;
+  margin-top: 8px;
+  border-radius: 16px;
+  border: 3px solid #ffe3f1;
+}
+
+/* ダウンロード制御 */
+.msg a {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 4px 10px;
+  background: #7bd3ff;
+  color: white;
+  text-decoration: none;
+  border-radius: 14px;
+  font-size: 12px;
+}
+
+.msg span {
+  font-size: 12px;
+  color: #999;
+}
+
+/* 投稿フォーム */
+#form {
+  max-width: 480px;
+  margin: 10px auto 30px;
+  background: #ffffff;
+  padding: 12px;
+  border-radius: 24px;
+  box-shadow: 0 6px 0 #ff9ecb;
+  display: flex;
+  gap: 6px;
+}
+
+#form input[type="text"],
+#form input[type="file"] {
+  flex: 1;
+  padding: 8px;
+  border-radius: 20px;
+  border: 2px solid #ff9ecb;
+}
+
+#form button {
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: none;
+  background: #ff6fb3;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* ローディング */
+#loading {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 182, 213, 0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: white;
+  z-index: 9999;
+}
+
+#loading::after {
+  content: "⭐ そうしんちゅう… ⭐";
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: .4; }
+  100% { opacity: 1; }
+}
